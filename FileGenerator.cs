@@ -10,6 +10,7 @@ namespace B1_task1
     {
         public static void GenerateFiles(string pathToDirectory)
         {
+            //генерация файлов
             Random random = new();
             for (int i = 0; i < 100; i++)
             {
@@ -31,6 +32,7 @@ namespace B1_task1
 
         static string GenerateRandomDate(Random random)
         {
+            //генерация случайной за последние 5 лет
             DateTime start = DateTime.Now.AddYears(-5);
             DateTime end = DateTime.Now;
             TimeSpan range = end - start;
@@ -40,18 +42,21 @@ namespace B1_task1
 
         static string GenerateRandomLatinString(Random random, int length)
         {
+            //генерация случайного набора из 10 латинских символов 
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
             return new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
         static string GenerateRandomCyrillicString(Random random, int length)
         {
+            //генерация случайного набора из 10 русских символов 
             const string chars = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюя";
             return new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
         static int GenerateRandomEvenNumber(Random random, int min, int max)
         {
+            //генерация случайного положительного четного целочисленного числа в диапазоне от min до max
             int number;
             do
             {

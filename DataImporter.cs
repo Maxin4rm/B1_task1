@@ -13,14 +13,18 @@ public static class DataImporter
                 Console.WriteLine("Указан неверный путь к файлу");
                 return;
             }
+            //чтение строк файла
             var lines = File.ReadAllLines(path);
             int totalLines = lines.Length;
             int insertedLines = 0;
-            var tasks = new List<Task>();
+            //добавление данных файла в контекст
             foreach (var line in lines)
             {
+                //разделение строки
                 var parts = line.Split(new[] { "||" }, StringSplitOptions.RemoveEmptyEntries);
-                if (parts.Length != 5) continue; // Пропуск строки, если некорректное количество данных
+                // Пропуск строки, если некорректное количество данных
+                if (parts.Length != 5) 
+                    continue; 
 
                 try
                 {

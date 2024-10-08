@@ -7,6 +7,7 @@ class FileMerger
     public static void MergeFiles(string filesDirectoryPath, string outputPath, string filter)
     {
         int removedLinesCount = 0;
+        //получение папки со сгенерированными файлами
         DirectoryInfo dir = new(filesDirectoryPath);
         using (StreamWriter writer = new(outputPath))
         {
@@ -15,8 +16,9 @@ class FileMerger
                 using (StreamReader reader = new(filePath.FullName))
                 {
                     string line;
-                    while ((line = reader.ReadLine()) != null)
+                    while ((line = reader.ReadLine()!) != null)
                     {
+                        //проверка на вход в строку введенное подстроки-фильтра
                         if (!line.Contains(filter))
                         {
                             writer.WriteLine(line);
@@ -29,7 +31,7 @@ class FileMerger
                 }
             }
         }
-
+        //вывод информации о количестве строк, не вошедших в файл из-за фильтра
         Console.WriteLine($"Удалено строк: {removedLinesCount}");
     }
 }
